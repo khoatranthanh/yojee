@@ -11,7 +11,14 @@ import css from "../css/app.css"
 //
 import "phoenix_html"
 
-// Import local files
-//
-// Local files can be imported directly using relative paths, for example:
-// import socket from "./socket"
+import React from "react"
+import ReactDOM from "react-dom"
+class HelloReact extends React.Component {
+  render() {
+    return <h1>Hello React!</h1>
+  }
+}
+ReactDOM.render(
+  <HelloReact/>,
+  document.getElementById("yojee_test")
+)
