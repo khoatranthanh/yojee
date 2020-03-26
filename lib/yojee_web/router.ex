@@ -15,6 +15,7 @@ defmodule YojeeWeb.Router do
 
   scope "/", YojeeWeb do
     pipe_through :browser
+    resources "/tweets", TweetController, only: [:index, :create]
 
     get "/*path", PageController, :index
   end
