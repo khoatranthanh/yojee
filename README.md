@@ -9,12 +9,13 @@ To start your Phoenix server:
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+# Version:
+* ReactJS: 16.13.1
+* Phoenix: 1.4.16
 
-## Learn more
+# How can you shape the architecture in a way that this solution scales with 1K, 1M, 1T tweets?
+* Now I just add 1 model is Tweet (content, number_of_retweet)
+* And I store by PostgreSQL, but I think when tweet number become huge, we should store some tweet (tweet show to user) in Memory cache (Redis).
+* And when we allow authorize via User login, I will create User table, 1 User has many Tweet, And for Re-tweet just store it as 1 Tweet with 1 more attribute tweet_id <- this is ID for original tweet.
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+* I'm not familiary with Elixir/Phoenix (this is the first time I used it), please help me grop up with this!
