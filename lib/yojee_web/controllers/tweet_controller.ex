@@ -14,9 +14,16 @@ defmodule YojeeWeb.TweetController do
   def create(conn, %{"tweet" => tweet_params}) do
     with {:ok, %Tweet{} = tweet} <- Yojees.create_tweet(tweet_params) do
       conn
-      |> put_status(:created)
-      |> put_resp_header("location", Routes.tweet_path(conn, :show, tweet))
+      |> put_status(:ok)
       |> render("show.json", tweet: tweet)
+    end
+  end
+
+  def update(conn, %{"id" => id, "tweet" => tweet_params}) do
+    tweet = Yojees.get_tweet!(id)
+
+    with {:ok, %Tweet{} = tweet} <- Yojees.update_tweet(tweet, tweet_params) do
+      render(conn, "show.json", tweet: tweet)
     end
   end
 end

@@ -14,5 +14,6 @@ defmodule Yojee.Yojees.Tweet do
     tweet
     |> cast(attrs, [:content, :number_of_retweet])
     |> validate_required([:content])
+    |> validate_length(:content, max: 140)
   end
 end

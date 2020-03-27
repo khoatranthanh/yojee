@@ -18,7 +18,8 @@ defmodule Yojee.Yojees do
 
   """
   def list_tweets do
-    Repo.all(Tweet)
+    query = from(t in Tweet, order_by: [desc: t.number_of_retweet])
+    Repo.all(query)
   end
 
   @doc """
@@ -71,22 +72,6 @@ defmodule Yojee.Yojees do
     tweet
     |> Tweet.changeset(attrs)
     |> Repo.update()
-  end
-
-  @doc """
-  Deletes a tweet.
-
-  ## Examples
-
-      iex> delete_tweet(tweet)
-      {:ok, %Tweet{}}
-
-      iex> delete_tweet(tweet)
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def delete_tweet(%Tweet{} = tweet) do
-    Repo.delete(tweet)
   end
 
   @doc """
